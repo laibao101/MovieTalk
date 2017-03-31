@@ -22,7 +22,7 @@ class SearchForm extends Component{
 	}
 
     fetchData(){
-        const REQUEST_URL = `http://api.douban.com/v2/movie/search?q=${this.state.query}`;
+        const REQUEST_URL = `https://api.douban.com/v2/movie/search?q=${this.state.query}`;
         console.log(REQUEST_URL);
 
         fetch(REQUEST_URL)
