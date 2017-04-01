@@ -2,6 +2,7 @@
 
 import React,{ Component } from 'react';
 import styles from '../Styles/Main';
+import SearchResult from './SearchResult';
 
 import {
     Text,
@@ -23,12 +24,20 @@ class SearchForm extends Component{
 
     fetchData(){
         const REQUEST_URL = `https://api.douban.com/v2/movie/search?q=${this.state.query}`;
-        console.log(REQUEST_URL);
 
         fetch(REQUEST_URL)
         .then(response => response.json())
         .then(responseData => {
             console.log(responseData);
+
+            console.log(this.props);
+            this.props.navigator.push({
+                component:SearchResult,
+                title:responseData.title,
+                passProps:{
+                    results:responseData.subjects
+                }
+            })
         })
         .done();
     }
