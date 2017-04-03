@@ -29,7 +29,6 @@ export default class MovieTalk extends Component {
         return (
             <TabBarIOS barTintColor="darkslateblue" tintColor="white">
                 <TabBarIOS.Item
-                    // systemIcon="featured"
                     icon={{uri:icons.star,scale:4.6}}
                     title="推荐电影"
                     selectedIcon={{uri:icons.starActive,scale:4.6}}
@@ -40,11 +39,9 @@ export default class MovieTalk extends Component {
                         })
                     }}
                 >
-                    {/* <MovieList></MovieList> */}
                     <Featured></Featured>
                 </TabBarIOS.Item>
                 <TabBarIOS.Item
-                    // systemIcon="most-viewed"
                     icon={{uri:icons.board,scale:4.6}}
                     title="北美电影"
                     selectedIcon={{uri:icons.boardActive,scale:4.6}}
@@ -58,10 +55,9 @@ export default class MovieTalk extends Component {
                     <USBox></USBox>
                 </TabBarIOS.Item>
                 <TabBarIOS.Item
-                    // systemIcon="most-viewed"
-                    icon={{uri:icons.board,scale:4.6}}
+                    icon={{uri:icons.search,scale:4.6}}
                     title="搜索"
-                    selectedIcon={{uri:icons.boardActive,scale:4.6}}
+                    selectedIcon={{uri:icons.searchActive,scale:4.6}}
                     selected={this.state.selectedTab === 'search' }
                     onPress={()=> {
                         this.setState({
@@ -70,7 +66,6 @@ export default class MovieTalk extends Component {
                     }}
                 >
                     <Search></Search>
-                    {/* <USBox></USBox> */}
                 </TabBarIOS.Item>
             </TabBarIOS>
         );
