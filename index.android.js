@@ -4,50 +4,49 @@
  * @flow
  */
 
-import React, { Component } from 'react';
-import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
+import React, {Component} from 'react';
+import {AppRegistry, StyleSheet, Text, View, Dimensions, TouchableHighlight, Alert} from 'react-native';
 
 export default class MovieTalk extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Double tap R on your keyboard to reload,{'\n'}
-          Shake or press menu button for dev menu
-        </Text>
-      </View>
-    );
-  }
+    render() {
+        const {height, width} = Dimensions.get('window');
+        return (
+            <View style={styles.container}>
+                <Text style={styles.item}>第1个</Text>
+                <Text style={styles.item}>第2个</Text>
+                <Text style={styles.item}>第3个</Text>
+                <Text style={[
+                    styles.item, {
+                        alignSelf: 'flex-end'
+                    }
+                ]}>第4个</Text>
+                <TouchableHighlight onPress={this._onPressButton}>
+                    <Text >我是按钮</Text>
+                </TouchableHighlight>
+            </View>
+        );
+    }
+
+    _onPressButton(){
+        Alert.alert('Alert Title','这是message');
+    }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+    container: {
+        flex: 1,
+        justifyContent: 'space-around',
+        alignItems: 'center',
+        backgroundColor: '#F5FCFF',
+        flexDirection: 'row',
+        flexWrap: 'wrap'
+    },
+    item: {
+        backgroundColor: 'red',
+        flex: 1,
+        marginLeft: 10,
+        textAlign: 'center'
+    }
 });
 
 AppRegistry.registerComponent('MovieTalk', () => MovieTalk);
